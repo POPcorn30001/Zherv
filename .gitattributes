@@ -1,0 +1,25 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Unity-specific file types
+*.unity        binary
+*.prefab       binary
+*.asset        binary
+*.mat          binary
+*.meta         text
+*.cs           text
+*.shader       text
+*.dll          binary
+*.exe          binary
+*.so           binary
+*.jpg          binary
+*.png          binary
+*.tga          binary
+*.psd          binary
+*.wav          binary
+*.mp3          binary
+*.ogg          binary
+
+# Prevent merge conflicts in certain files
+*.sln          merge=unityyamlmerge
+*.csproj       merge=unityyamlmerge
