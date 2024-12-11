@@ -99,6 +99,7 @@ public class Character2DMovement : MonoBehaviour
 			0.0f
 		);
 		
+		
 	    mController.Move(movement * Time.fixedDeltaTime);
     }
 
@@ -187,6 +188,7 @@ public class Character2DMovement : MonoBehaviour
     /// </summary>
     void AnimateCharacter()
     {
+		
 	    /*
 	     * Task #1a: Orienting the character
 	     *
@@ -213,6 +215,11 @@ public class Character2DMovement : MonoBehaviour
 	     *   * Rotating a local rotation by an axis: localRotation *= Quaternion.Euler(...)
 	     */
 	    
+		Vector3 scale = gameObject.transform.localScale;
+		if(mInput.move.x > 0) scale.x = Mathf.Abs(scale.x);
+		else if (mInput.move.x < 0) scale.x = -Mathf.Abs(scale.x);
+		gameObject.transform.localScale = scale;
+
 	    var animator = mSelector.charAnimator;
 	    if (animator != null)
 	    {
@@ -226,6 +233,7 @@ public class Character2DMovement : MonoBehaviour
 			var grounded = mController.isGrounded;
 			var jump = mInput.jump;
 			var falling = !mController.isGrounded && mFallTimeoutDelta <= 0.0f;
+
 
 			/*
 			 * Task #1a: Passing properties to the Animator
@@ -265,6 +273,13 @@ public class Character2DMovement : MonoBehaviour
 			 *   * Current Animator instance: *animator*
 			 *   * Animator methods: *SetFloat* and *SetBool*
 			 */
+			animator.SetBool("Jump", jump);
+			animator.SetBool("Fall", falling);
+			animator.SetBool("Grounded", grounded);
+			animator.SetBool("Crouch", crouch);
+			animator.SetFloat("Speed", speed);
+			animator.SetFloat("MoveSpeed", moveSpeed);
+
 	    }
     }
 }
