@@ -224,6 +224,7 @@ public class DebugMenuUI : MonoBehaviour
                 // Placing the elements next to each other.
                 GUILayout.BeginHorizontal();
                 {
+                    /*
                     for (var iii = 1; iii <= 10; ++iii)
                     { // Create a set of 10 sliders all sharing the same value.
                         mDummyValue = GUILayout.VerticalSlider(
@@ -231,6 +232,7 @@ public class DebugMenuUI : MonoBehaviour
                             GUILayout.ExpandHeight(true)
                         );
                     }
+                    */
 
                     /*
                      * Task 3a: The Dummy
